@@ -1,14 +1,15 @@
-import React from 'react';
-import  './styles/init.scss';
-import './styles/app.scss'
+import React from 'react'
+import '@/styles/init.scss'
+import '@/styles/app.scss'
+import 'routes'
 import Demo from './demo'
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Demo></Demo>
+        <Demo />
         <p>
-          Intelligence and monitoring
+          Intelligent and Monitor, Effectiveness
         </p>
           Ultron
       </header>
@@ -16,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

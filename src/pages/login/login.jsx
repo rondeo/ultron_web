@@ -6,11 +6,14 @@
  * @Description: 登陆页面
  * @youWant: add you want info here
  * @Date: 2019-04-30 15:57:50
- * @LastEditTime: 2019-04-30 16:00:07
+ * @LastEditTime: 2019-05-01 17:06:30
  */
-import {React , Component } from 'react'
+import React from 'react'
 
-
-class Login extends Component {
-  
+export default class Login extends React.Component {
+  render () {
+    return <div>
+      login
+    </div>
+  }
 }
