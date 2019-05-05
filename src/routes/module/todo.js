@@ -6,12 +6,12 @@ import React from 'react'
 export default function(Loadable){
   return [
     {
-      name: "登陆页面",
-      path: '/login',
+      name: "Todo",
+      path: '/todo',
       exact: true,
       noDrop: true,
       component: Loadable({
-        loader: () => import('@/pages/login/login'),
+        loader: () => import('@/pages/todo/todo_index'),
         loading: () => <div>loading</div>
       })
     }

@@ -6,7 +6,7 @@
  * @Description: 借助webpack的能力完成自动化
  * @youWant: add you want info here
  * @Date: 2019-05-01 17:01:46
- * @LastEditTime: 2019-05-01 17:13:34
+ * @LastEditTime: 2019-05-05 16:13:06
  */
 const files = require.context('.', true, /\.js$/)
 let routes = []

@@ -6,10 +6,11 @@
  * @Description: 自定义webpack配置
  * @youWant: add you want info here
  * @Date: 2019-05-01 15:36:59
- * @LastEditTime: 2019-05-01 16:38:49
+ * @LastEditTime: 2019-05-05 14:52:06
  */
 const path = require('path')
 const resolve = (file) => path.resolve(__dirname, '..', file)
+// const Dotenv = require('dotenv-webpack');
 // 基本配置
 const BaseConfig = {
   // 别名配置
@@ -25,6 +26,12 @@ const BaseConfig = {
       "styles": resolve('src/styles'),
       "utils": resolve('src/utils')
     }
-  }
+  },
+  plugins: [
+    // 同步.env文件到web端 这个可以不用 env.js已经帮我们处理过了
+    /* new Dotenv({
+      path: resolve(`.env.${process.env.NODE_ENV}`),
+    })  */
+  ]
 }
 module.exports = BaseConfig

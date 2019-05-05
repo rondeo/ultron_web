@@ -7,6 +7,7 @@ const paths = require('./paths');
 // Make sure that including paths.js after env.js will read .env variables.
 delete require.cache[require.resolve('./paths')];
 
+
 const NODE_ENV = process.env.NODE_ENV;
 if (!NODE_ENV) {
   throw new Error(
@@ -65,6 +66,8 @@ function getClientEnvironment(publicUrl) {
     .filter(key => REACT_APP.test(key))
     .reduce(
       (env, key) => {
+        const _key = key.substring(('REACT_APP_').length)
+        console.log(_key)
         env[key] = process.env[key];
         return env;
       },
