@@ -41,6 +41,7 @@ const useTypeScript = fs.existsSync(paths.appTsConfig);
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
+const lessRegex = /\.(less)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 // This is the production and development configuration.
@@ -65,7 +66,6 @@ module.exports = function(webpackEnv) {
     : isEnvDevelopment && '';
   // Get environment variables to inject into our app.
   const env = getClientEnvironment(publicUrl);
-  console.log(env)
   // common function to get style loaders
   const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
@@ -105,15 +105,26 @@ module.exports = function(webpackEnv) {
           ],
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },
-      },
+      }
     ].filter(Boolean);
     if (preProcessor) {
-      loaders.push({
+      const lessOptions = {
+        modifyVars: {
+          'primary-color': '#1891ac',
+          'link-color': '#1891ac',
+        },
+        javascriptEnabled: true,
+      }
+      let loaderOpts = {
         loader: require.resolve(preProcessor),
         options: {
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },
-      });
+      }
+      if (preProcessor === 'less-loader') {
+        loaderOpts.options = Object.assign(loaderOpts.options, lessOptions)
+      }
+      loaders.push(loaderOpts);
     }
     return loaders;
   };
@@ -424,11 +435,32 @@ module.exports = function(webpackEnv) {
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                 },
                 'sass-loader'
-              ),
+              ).concat([
+                {
+                  loader: 'sass-resources-loader',
+                  options: {
+                    resources: [
+                      path.resolve(__dirname, '../src/styles/vars.scss'),
+                      path.resolve(__dirname, '../src/styles/mixins.scss')
+                    ],
+                  }
+                }
+              ]),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
               // Remove this when webpack adds a warning or an error for this.
               // See https://github.com/webpack/webpack/issues/6571
+              sideEffects: true,
+            },
+            {
+              test: lessRegex,
+              use: getStyleLoaders(
+                {
+                  importLoaders: 2,
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                },
+                'less-loader'
+              ),
               sideEffects: true,
             },
             // Adds support for CSS Modules, but using SASS

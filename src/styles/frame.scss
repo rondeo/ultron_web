@@ -1,0 +1,49 @@
+/*
+ * @Author: etongfu
+ * @Email: 13583254085@163.com
+ * @Version: 
+ * @LastEditors: etongfu
+ * @Description: 框架样式 
+ * @youWant: add you want info here
+ * @Date: 2019-05-06 15:00:58
+ * @LastEditTime: 2019-05-06 17:18:48
+ */
+ #ultron {
+  @include wh(100%, 100%);
+  .app-wrap {
+    @include wh(100%, 100%);
+    // 页面级内容
+    .app{
+      @include wh(100%, 100%);
+      background-color: $bg-color;
+      display: flex;
+      // 侧边栏
+      .app-side {
+        height: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .app-side-content {
+          position: fixed;
+          top: 0;
+          width: 275px; 
+          height: 100%;
+          background-color: black;
+          .app-side-inner {
+            padding: 0 20px;
+          }
+        }
+      }
+      // 主体部分
+      .app-main {
+        flex: 2;
+      }
+      // 右边nav
+      .app-right-nav {
+        flex: 1;
+      }
+      
+    }
+  }
+}

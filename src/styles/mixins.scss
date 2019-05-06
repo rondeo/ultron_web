@@ -1,0 +1,122 @@
+/*
+ * @Author: etongfu
+ * @Email: 13583254085@163.com
+ * @Version: 
+ * @LastEditors: etongfu
+ * @Description: 混入样式
+ * @youWant: add you want info here
+ * @Date: 2019-05-06 16:14:28
+ * @LastEditTime: 2019-05-06 16:50:04
+ */
+ // use mixins  @include center;
+ //  背景图片地址和大小
+@mixin bis($url) { 
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+// radius
+@mixin borderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+// 定位上下左右居中
+@mixin center {  
+  position: absolute;
+  top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+// 定位上下居中
+@mixin ct {  
+  position: absolute;
+  top: 50%;
+    transform: translateY(-50%);
+}
+// 定位上下居中
+@mixin cl {  
+  position: absolute;
+  left: 50%;
+    transform: translateX(-50%);
+}
+// 宽高
+@mixin wh($width, $height){
+  width: $width;
+  height: $height;
+}
+// 字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {  
+  font: #{$size}/#{$line-height} $family;
+}
+// 字体大小，颜色
+@mixin sc($size, $color){
+  font-size: $size;
+  color: $color;
+}
+// flex 布局和 子元素 对其方式
+@mixin fj($type: space-between){
+  display: flex;
+  justify-content: $type;
+
+}
+// inline-flex 布局和 子元素 对其方式
+@mixin ifj($type: space-between){
+  display: inline-flex;
+  justify-content: $type;
+
+}
+// 圆圈
+@mixin circle($width: 10px, $color: #3972E5) {
+  display: inline-block;
+  width: $width;
+  height: $width;
+  background-color: $color;
+  border-radius: 50%;
+}
+
+// 过过渡动画
+@mixin fade {
+  transition: all ease 1s;
+}
+
+// 带背景颜色字体包裹
+@mixin bcf($color: #000, $bg: #fff, $opacity:0.6) {
+  display: inline-block;
+  background-color: $bg;
+  padding: 0px 4px;
+  border-radius: 3px;
+  color: $color;
+  opacity: $opacity;
+}
+// 上三角
+@mixin triangleUp($color:rgba(0, 0, 0, 0.6)){
+  display: inline-block;
+  top: 5px;
+  height: 0;
+  border-width: 6px 6px 0;
+  border-style: solid;
+  border-color: $color transparent transparent;
+  position: relative;
+}
+// 右三角
+@mixin triangleRight($color:rgba(0, 0, 0, 0.6)){
+  display: inline-block;
+  height: 0;
+  border-width: 6px 0 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent $color;
+  position: relative;
+}
+// 清除浮动
+@mixin clearfix {
+    &::after{
+        content: ' ';
+        display: block;
+        clear: both;
+        height:0;
+        visibility: hidden;
+    }
+}

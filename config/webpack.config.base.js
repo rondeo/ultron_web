@@ -6,7 +6,7 @@
  * @Description: 自定义webpack配置
  * @youWant: add you want info here
  * @Date: 2019-05-01 15:36:59
- * @LastEditTime: 2019-05-05 14:52:06
+ * @LastEditTime: 2019-05-05 17:59:09
  */
 const path = require('path')
 const resolve = (file) => path.resolve(__dirname, '..', file)
@@ -20,6 +20,7 @@ const BaseConfig = {
       "@": resolve('src'),
       "api": resolve('src/api'),
       "assets": resolve('src/assets'),
+      "components": resolve('src/components'),
       "pages": resolve('src/pages'),
       "reducers": resolve('src/reducers'),
       "routes": resolve('src/routes'),

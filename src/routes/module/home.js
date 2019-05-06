@@ -1,18 +1,18 @@
-import PageLoading from 'components/loading'
 import Loadable from 'react-loadable'
+import PageLoading from 'components/loading'
 /**
  * 路由
  * @param {*} Loadable 
  */
 export default [
     {
-      name: "Todo",
-      path: '/todo',
+      name: "首页",
+      path: '/',
       exact: true,
-      requiresAuth: false,
       noDrop: true,
+      requiresAuth: false,
       component: Loadable({
-        loader: () => import('@/pages/todo/todo_index'),
+        loader: () => import('@/pages/home/home'),
         loading: PageLoading,
         delay: 300
       })
