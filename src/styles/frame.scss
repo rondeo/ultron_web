@@ -6,8 +6,9 @@
  * @Description: 框架样式 
  * @youWant: add you want info here
  * @Date: 2019-05-06 15:00:58
- * @LastEditTime: 2019-05-06 17:18:48
+ * @LastEditTime: 2019-05-07 16:19:22
  */
+ @import url('./common.scss');
  #ultron {
   @include wh(100%, 100%);
   .app-wrap {
@@ -20,28 +21,104 @@
       // 侧边栏
       .app-side {
         height: 100%;
-        flex: 1;
+        flex: 2.5;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        // ================== 侧边栏内容包裹层 ==================
         .app-side-content {
           position: fixed;
           top: 0;
-          width: 275px; 
+          width: $side-width; 
           height: 100%;
-          background-color: black;
           .app-side-inner {
-            padding: 0 20px;
+            padding: $top-padding 20px;
+            height: 100%;
+            // ================== 用户头像和用户名部分 ==================
+            .side-user{
+              &:hover {
+                background-color: rgb(225, 239, 249);
+                .user-arrow {
+                  color: $theme-color;
+                }
+              }
+              cursor: pointer;
+              display: flex;
+              width: 80%;
+              align-items: center;
+              padding: 5px 10px;
+              border-radius: 30px;
+              .user-avatar,.user-arrow {
+                flex: 1;
+              }
+              .user-info {
+                flex: 0 0 70%;
+                padding:0 10px;
+                // 用户名和备注部分
+                .username {
+                  color: black;
+                  font-weight: bold;
+                }
+                .remarks {
+                  color:  rgb(101, 119, 134);
+                  font-size: 17px;
+                }
+              }
+            }
+          }
+        }
+        // ================== 侧边栏部分 ==================
+        .side-menu-wrap {
+          .side-menu {
+            li {
+              // a标签样式
+              a {
+                color: black;
+                font-size: 19px;
+                font-weight: bold;
+                padding: 10px;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+                width: 50%;
+                span {
+                  margin-left: 20px;
+                }
+                &:hover {
+                  background-color: rgba(24, 145, 172, 0.1);
+                  color: $theme-color;
+                }
+              }
+              margin: 10px 0;
+            }
           }
         }
       }
       // 主体部分
       .app-main {
-        flex: 2;
+        flex: 4;
+        height: 100%;
+        background-color: #ffffff;
+        .app-main-content {
+          padding: $top-padding;
+        }
       }
       // 右边nav
       .app-right-nav {
-        flex: 1;
+        height: 100%;
+        flex: 3;
+        .right-nav-content {
+          width: 360px;
+          position: fixed;
+          top: 0;
+          padding: $top-padding 20px;
+          height: 100%;;
+          .nav-search {
+            height: 45px;
+            background-color: rgb(230, 236, 240);
+            border-radius: 20px;
+          }
+        }
       }
       
     }

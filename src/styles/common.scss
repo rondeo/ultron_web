@@ -1,0 +1,54 @@
+/*
+ * @Author: etongfu
+ * @Email: 13583254085@163.com
+ * @Version: 
+ * @LastEditors: etongfu
+ * @Description: 通用样式表
+ * @youWant: add you want info here
+ * @Date: 2019-05-07 14:21:11
+ * @LastEditTime: 2019-05-07 16:18:28
+ */
+// ================== box ==================
+.box {
+  margin-bottom: 15px;
+  margin-top: 15px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+}
+.box:not([class*="bg-"]) {
+  background: #fff;
+}
+.box > header,
+.box .box-heading {
+  background-color: inherit;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 15px;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+// ================== box width border and radius ==================
+.radius-border-box {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  display: flex;
+  border: 0 solid black;
+  border-radius: 20px;
+  background-color: #fff;
+}
+// ================== border ==================

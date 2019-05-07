@@ -6,10 +6,11 @@
  * @Description: 系统
  * @youWant: add you want info here
  * @Date: 2019-05-05 15:34:47
- * @LastEditTime: 2019-05-06 17:05:38
+ * @LastEditTime: 2019-05-07 16:23:41
  */
 import React from 'react'
 import AppSide from './side'
+import NavRight from './nav_right'
 import 'styles/frame.scss'
 
 export default class Frame extends React.Component {
@@ -22,12 +23,13 @@ export default class Frame extends React.Component {
         </div>
         {/* 核心页面内容 */}
         <main className="app-main">
+          <h1>h2</h1>
           {this.props.children}
         </main>
         {/* 右侧nav */}
-        <nav className="app-right-nav">
-          右边nav
-        </nav>
+        <div className="app-right-nav">
+          <NavRight />
+        </div>
       </div>
     )
   }
