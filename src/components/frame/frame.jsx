@@ -6,7 +6,7 @@
  * @Description: 系统
  * @youWant: add you want info here
  * @Date: 2019-05-05 15:34:47
- * @LastEditTime: 2019-05-07 16:23:41
+ * @LastEditTime: 2019-05-08 20:45:19
  */
 import React from 'react'
 import AppSide from './side'
@@ -23,7 +23,6 @@ export default class Frame extends React.Component {
         </div>
         {/* 核心页面内容 */}
         <main className="app-main">
-          <h1>h2</h1>
           {this.props.children}
         </main>
         {/* 右侧nav */}

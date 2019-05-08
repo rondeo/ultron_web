@@ -6,14 +6,14 @@
  * @Description: home页面
  * @youWant: add you want info here
  * @Date: 2019-04-30 15:57:50
- * @LastEditTime: 2019-05-06 14:45:15
+ * @LastEditTime: 2019-05-08 20:58:57
  */
 import React from 'react'
+import MainWrap from 'components/main_wrap';
+
 
 export default class Home extends React.Component {
   render () {
-    return <div>
-      我就是首页
-    </div>
+    return <MainWrap />
   }
 }
