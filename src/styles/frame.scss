@@ -6,7 +6,7 @@
  * @Description: 框架样式 
  * @youWant: add you want info here
  * @Date: 2019-05-06 15:00:58
- * @LastEditTime: 2019-05-08 20:54:17
+ * @LastEditTime: 2019-05-13 11:25:36
  */
  @import url('./common.scss');
  #ultron {
@@ -98,20 +98,36 @@
       .app-main {
         flex: 4;
         height: 100%;
-        position: relative;
         background-color: #ffffff;
         padding: $top-padding;
         border-left: 1px solid $border-color;
         border-right: 1px solid $border-color;
-        .main-header {
-          position: absolute;
-          left: 0;
-          right: 0;
-          padding: 10px;
-          border-bottom: 1px solid $border-color;
-          h2 {
-            color: black;
-            font-weight: bold;
+        // 携带内容的区域内容区域
+        .app-content-wrap {
+          height: 100%;
+          position: relative;
+          // header部分
+          .main-header {
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: 0 10px;
+            border-bottom: 1px solid #e6ecf0;
+            margin: 0 -10px;
+            max-height: $header-height;
+            h2 {
+              color: black;
+              font-weight: bold;
+            }
+          }
+          // 核心内容部分
+          .app-content{
+            position: relative;
+            height: 100%;
+          }
+          // 有header的内容
+          .app-content-with-header{
+            padding-top: 40px;
           }
         }
       }
