@@ -6,7 +6,7 @@
  * @Description: 框架样式 
  * @youWant: add you want info here
  * @Date: 2019-05-06 15:00:58
- * @LastEditTime: 2019-05-13 11:25:36
+ * @LastEditTime: 2019-05-17 19:22:18
  */
  @import url('./common.scss');
  #ultron {
@@ -90,6 +90,10 @@
                 }
               }
               margin: 10px 0;
+              // 选中样式
+              a.side-menu-active{
+                color: $theme-color;
+              }
             }
           }
         }

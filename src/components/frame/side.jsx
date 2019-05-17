@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Avatar, Icon } from 'antd'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 class AppSide extends Component {
   constructor(props) {
@@ -28,32 +28,32 @@ class AppSide extends Component {
           <nav className="side-menu-wrap">
             <ul className="side-menu">
               <li>
-                <Link to="/"> 
+                <NavLink activeClassName="side-menu-active" to="/home"> 
                   <Icon type="home" />  <span>主页</span>
-                </Link>
+                </NavLink>
               </li>
               
               <li>
-                <Link to="/"> 
+                <NavLink activeClassName="side-menu-active" to="/found"> 
                   <Icon type="compass" />  <span>发现</span>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/"> 
+                <NavLink activeClassName="side-menu-active" to="/monitor"> 
                   <Icon type="alert" />  <span>监控</span>
-                </Link>
+                </NavLink>
               </li>
 
               <li>
-                <Link to="/"> 
+                <NavLink activeClassName="side-menu-active" to="/file"> 
                   <Icon type="file-protect" />  <span>文档</span>
-                </Link>
+                </NavLink>
               </li>
 
               <li>
-                <Link to="/"> 
+                <NavLink activeClassName="side-menu-active" to="/todo"> 
                   <Icon type="database" /> <span>待办</span>
-                </Link>
+                </NavLink>
               </li>
 
             </ul>
