@@ -51,6 +51,12 @@ class AppSide extends Component {
               </li>
 
               <li>
+                <NavLink activeClassName="side-menu-active" to="/tools"> 
+                  <Icon type="tool" />  <span>工具</span>
+                </NavLink>
+              </li>
+
+              <li>
                 <NavLink activeClassName="side-menu-active" to="/todo"> 
                   <Icon type="database" /> <span>待办</span>
                 </NavLink>
