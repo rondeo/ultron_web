@@ -65,6 +65,12 @@ class AppSide extends Component {
             </ul>
           </nav>
         </div>
+        <div className="side-logo">
+          <img src={require('assets/logo.png')} alt="" />
+          <p className="copyright p-t-5">
+            © 2019 Etongfu, Inc.
+          </p>
+        </div>
       </div>
     )
   }

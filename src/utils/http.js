@@ -60,7 +60,8 @@ service.interceptors.response.use(
       if (response.data.code === 10086) {
         store.dispatch('SessionFailure')
       } else {
-        if (response.data && !response.data.succeed) {
+        if (response.data && !response.data.success) {
+          // 启动全局播报异常
           !response.config.mute &&  notification['warning']({
                                       message: '系统异常',
                                       description: response.data.message,
@@ -79,7 +80,7 @@ service.interceptors.response.use(
     if (!ignoreWarn) {
       notification['error']({
         message: '系统异常',
-        description: '我们的系统可能出来点问题，请刷新试试或者耐心等待~',
+        description: '我们的系统可能出了点问题，请刷新试试或者耐心等待~',
       });
     }
     return Promise.reject(error)
