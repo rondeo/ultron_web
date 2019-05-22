@@ -6,7 +6,7 @@
  * @Description: 右边Nav组件
  * @youWant: add you want info here
  * @Date: 2019-05-07 15:44:22
- * @LastEditTime: 2019-05-21 16:52:47
+ * @LastEditTime: 2019-05-22 13:50:06
  */
 import React, { Component } from 'react';
 import Weather from '../widgets/weather'
@@ -20,9 +20,9 @@ class NavRight extends Component {
     return (
       <nav className="right-nav-content">
         {/* 搜索部分 */}
-        <div className="nav-search">
+        {/* <div className="nav-search">
           Search
-        </div>
+        </div> */}
         {/* 时间/天气部分 */}
         <Weather />
         {/* 信息栏 */}

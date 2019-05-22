@@ -4,11 +4,31 @@
  * @Version: 
  * @Date: 2019-05-21 16:40:40
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-21 17:33:43
+ * @LastEditTime: 2019-05-22 14:57:13
  * @Description: 各个部件样式
  * @youWant: add you want info here
  */
 // ================== weather box ==================
 .weather-box{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // padding 控制
+  .weather-item:not(:last-child) {
+    padding-bottom: 10px;
+  }
+  // 内容行
+  .weather-item{
+    font-weight: bold;
+    // icon 部分
+    .item-icon{
+      width: 25px;
+      // 改变icon大小
+      font-size: 16px;
+    }
+    // 内容文字部分
+    .item-font{
+      padding-left: 10px;
+    }
+  }
 }

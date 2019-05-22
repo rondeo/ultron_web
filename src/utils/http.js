@@ -17,7 +17,7 @@ let ignoreWarn = false // 是否忽略提醒
 // create axios instance
 const service = axios.create({
   mute: false,
-  baseURL: process.env.BASE_API, // base_url for api
+  baseURL: process.env.REACT_APP_BASE_API, // base_url for api
   timeout: 4 * 5000 // request overtime time
 })
 // request intercept
@@ -26,9 +26,9 @@ service.interceptors.request.use(config => {
   // Do something before request is sent  add token for request
   // userId
   // config.headers["iats-session-key"] = ; // define token key you can use you customize key
-  if (store.getters.userToken) {
-    // config.headers['key'] = store.getters.userToken // define token key you can use you customize key
-  }
+  /* if (store.getters.userToken) {
+    config.headers['key'] = store.getters.userToken // define token key you can use you customize key
+  } */
   // deal get request
   if (config.method === 'get') {
     config.paramsSerializer = function (params) {
@@ -56,17 +56,18 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(
   response => {
     if (response.status === 200) {
-      // session失效
-      if (response.data.code === 10086) {
-        store.dispatch('SessionFailure')
+      // 登陆失效
+      /* if (response.data.code === 10086) {
+        // store.dispatch('SessionFailure')
       } else {
-        if (response.data && !response.data.success) {
-          // 启动全局播报异常
-          !response.config.mute &&  notification['warning']({
-                                      message: '系统异常',
-                                      description: response.data.message,
-                                    })
-        }
+        
+      } */
+      if (response.data && !response.data.success) {
+        // 启动全局播报异常
+        !response.config.mute && notification['warning']({
+                                    message: '系统异常',
+                                    description: response.data.message,
+                                  })
       }
     }
     // return real data entity

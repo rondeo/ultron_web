@@ -308,6 +308,7 @@ module.exports = function(webpackEnv) {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
           enforce: 'pre',
           use: [
+            "thread-loader",
             {
               options: {
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
@@ -340,57 +341,81 @@ module.exports = function(webpackEnv) {
             {
               test: /\.(js|mjs|jsx|ts|tsx)$/,
               include: paths.appSrc,
-              loader: require.resolve('babel-loader'),
-              options: {
-                customize: require.resolve(
-                  'babel-preset-react-app/webpack-overrides'
-                ),
-                
-                plugins: [
-                  [
-                    require.resolve('babel-plugin-named-asset-import'),
-                    {
-                      loaderMap: {
-                        svg: {
-                          ReactComponent: '@svgr/webpack?-svgo,+ref![path]',
+              use: [
+                /* {
+                  loader: "thread-loader",
+                  // 有同样配置的 loader 会共享一个 worker 池(worker pool)
+                  options: {
+                    // 产生的 worker 的数量，默认是 cpu 的核心数
+                    workers: 2,
+                    // 一个 worker 进程中并行执行工作的数量
+                    // 默认为 20
+                    workerParallelJobs: 50,
+                    // 额外的 node.js 参数
+                    workerNodeArgs: ['--max-old-space-size', '1024'],
+                  }
+                }, */
+                // 开启多线程编译
+                "thread-loader",
+                {
+                  loader: require.resolve('babel-loader'),
+                  options: {
+                    customize: require.resolve(
+                      'babel-preset-react-app/webpack-overrides'
+                    ),
+                    
+                    plugins: [
+                      [
+                        require.resolve('babel-plugin-named-asset-import'),
+                        {
+                          loaderMap: {
+                            svg: {
+                              ReactComponent: '@svgr/webpack?-svgo,+ref![path]',
+                            },
+                          },
                         },
-                      },
-                    },
-                  ],
-                ],
-                // This is a feature of `babel-loader` for webpack (not Babel itself).
-                // It enables caching results in ./node_modules/.cache/babel-loader/
-                // directory for faster rebuilds.
-                cacheDirectory: true,
-                cacheCompression: isEnvProduction,
-                compact: isEnvProduction,
-              },
+                      ],
+                    ],
+                    // This is a feature of `babel-loader` for webpack (not Babel itself).
+                    // It enables caching results in ./node_modules/.cache/babel-loader/
+                    // directory for faster rebuilds.
+                    cacheDirectory: true,
+                    cacheCompression: isEnvProduction,
+                    compact: isEnvProduction,
+                  },
+                }
+              ], 
             },
             // Process any JS outside of the app with Babel.
             // Unlike the application JS, we only compile the standard ES features.
             {
               test: /\.(js|mjs)$/,
               exclude: /@babel(?:\/|\\{1,2})runtime/,
-              loader: require.resolve('babel-loader'),
-              options: {
-                babelrc: false,
-                configFile: false,
-                compact: false,
-                presets: [
-                  [
-                    require.resolve('babel-preset-react-app/dependencies'),
-                    { helpers: true },
-                  ],
-                ],
-                cacheDirectory: true,
-                cacheCompression: isEnvProduction,
-                
-                // If an error happens in a package, it's possible to be
-                // because it was compiled. Thus, we don't want the browser
-                // debugger to show the original code. Instead, the code
-                // being evaluated would be much more helpful.
-                sourceMaps: false,
-              },
+              use: [
+                "thread-loader",
+                {
+                  loader: require.resolve('babel-loader'),
+                  options: {
+                    babelrc: false,
+                    configFile: false,
+                    compact: false,
+                    presets: [
+                      [
+                        require.resolve('babel-preset-react-app/dependencies'),
+                        { helpers: true },
+                      ],
+                    ],
+                    cacheDirectory: true,
+                    cacheCompression: isEnvProduction,
+                    
+                    // If an error happens in a package, it's possible to be
+                    // because it was compiled. Thus, we don't want the browser
+                    // debugger to show the original code. Instead, the code
+                    // being evaluated would be much more helpful.
+                    sourceMaps: false,
+                  },
+                }
+              ]
             },
             // "postcss" loader applies autoprefixer to our CSS.
             // "css" loader resolves paths in CSS and adds assets as dependencies.
