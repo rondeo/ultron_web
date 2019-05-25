@@ -15,10 +15,11 @@ export const FrameRouter = (
         {/* <Route exact path="/" component={Demo} /> */}
         {
           routers.filter(route => !route.noFrame).map(route => {
-            //todo 在这里同样可以进行鉴权相关的操作
-            return <Route key={route.path} exact={route.exact} path={route.path} component={route.component} />
+            //todo 进行鉴权相关操作
+            return <Route key={route.path} redirect={route.redirect} exact={route.exact} path={route.path} component={route.component} />
           })
         }
+        {/* 404页面 */}
         <Route component={NotFound} />
     </Switch>
   </Frame>

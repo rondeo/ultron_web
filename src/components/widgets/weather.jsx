@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-05-21 16:38:48
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-22 17:29:27
+ * @LastEditTime: 2019-05-25 17:41:26
  * @Description: 日期/天气组件
  * @youWant: add you want info here
  */
@@ -109,7 +109,7 @@ export default class Weather extends React.Component {
         {
           this.state.hideWeather ? null : (
             <div className="weather-item weather-info">
-              <img className="item-icon" src={this.state.icon} alt="天气" />
+              <img className="item-icon" src={this.state.icon} alt="--" />
               <span className="item-font">
                 {this.state.city}
                 &nbsp;&nbsp;&nbsp;&nbsp;
