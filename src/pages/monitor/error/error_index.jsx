@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-05-27 15:45:47
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-29 16:49:24
+ * @LastEditTime: 2019-05-29 17:11:32
  * @Description: 错误数据的监控页面
  * @youWant: add you want info here
  */
@@ -121,7 +121,6 @@ export default class ErrorIndex extends React.Component {
           <SearchItem tip="时间">
             <Input placeholder="请输入时间" />
           </SearchItem>
-
           <SearchItem tip="时间">
             <Input placeholder="请输入时间" />
           </SearchItem>
