@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-05-20 17:35:27
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-22 15:11:02
+ * @LastEditTime: 2019-05-29 15:20:29
  * @Description: Util 文件
  * @youWant: add you want info here
  */
@@ -23,7 +23,7 @@ export default class Util {
     // 在null或者不传的情况下进行默认值传递
     if (types.indexOf(format) === -1) format = types[0]
     const date = new Date() ,seperator1 = "-" , seperator2 = ":"
-    let month = initDateStr(date.getMonth() + 1) , strDate = initDateStr(date.getDate()), hours = initDateStr(date.getHours()), minutes = date.getMinutes()
+    let month = initDateStr(date.getMonth() + 1) , strDate = initDateStr(date.getDate()), hours = initDateStr(date.getHours()), minutes = initDateStr(date.getMinutes()) , seconds = initDateStr(date.getSeconds())
     let currentdate = ""
     switch (types.indexOf(format)) {
       case 0:
@@ -42,7 +42,7 @@ export default class Util {
           seperator2 +
           minutes +
           seperator2 +
-          date.getSeconds()
+          seconds
           : date.getFullYear() +
           seperator1 +
           month +
@@ -53,7 +53,7 @@ export default class Util {
           seperator2 +
           minutes +
           seperator2 +
-          date.getSeconds()
+          seconds
         break;
       case 2:
         currentdate = hours + seperator2 + minutes + seperator2 + date.getSeconds()
