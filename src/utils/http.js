@@ -37,14 +37,14 @@ service.interceptors.request.use(config => {
   }
   // deal post request
   if (config.method === 'post') {
-    config.transformRequest = [function (data) {
+    /* config.transformRequest = [function (data) {
       // Do whatever you want to transform the data
       let ret = ''
       for (let it in data) {
         ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
       }
       return ret
-    }]
+    }] */
   }
   return config
 }, error => {

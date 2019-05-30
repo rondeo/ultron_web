@@ -2,37 +2,62 @@
  * @Author: etongfu
  * @Email: 13583254085@163.com
  * @Version: 
- * @Date: 2019-05-27 15:45:47
+ * @Date: 2019-05-30 15:44:23
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-30 15:41:56
- * @Description: 错误数据的监控页面
+ * @LastEditTime: 2019-05-30 18:04:59
+ * @Description: 资源监控首页
  * @youWant: add you want info here
  */
 import React from 'react'
 import { SearchTitle, SearchItem } from 'components/search_title'
 import { Input, Button, Tooltip, Table, Tag } from 'antd'
+import { getResourceList } from 'api/monitor/resource'
 
-export default class ErrorIndex extends React.Component {
+export default class ResourceIndex extends React.Component {
+
+  constructor () {
+    super()
+    this.state = {
+      pageNo: 1,
+      pageSize: 15
+    }
+  }
+
+  componentDidMount () {
+    this.load()
+  }
+
+  load = () => {
+    let para = {
+      pageNo: this.state.pageNo,
+      pageSize: this.state.pageSize
+    }
+    getResourceList(para).then((result) => {
+      console.log(result)
+    }).catch((err) => {
+      console.error(err)
+    })
+  }
 
   columns = [
     {
-      title: '错误平台',
+      title: '信息来源',
       dataIndex: 'name',
       key: 'name',
       render: text => <span>{text}</span>,
     },
     {
-      title: '错误信息',
+      title: '资源名称',
       dataIndex: 'age',
       key: 'age',
     },
     {
-      title: '操作系统',
+      title: '资源类型',
       dataIndex: 'address',
       key: 'address',
     },
     {
-      title: '错误类型',
+      title: '资源大小（KB）',
       key: 'tags',
       dataIndex: 'tags',
       render: tags => (
@@ -52,7 +77,7 @@ export default class ErrorIndex extends React.Component {
       ),
     },
     {
-      title: '错误位置',
+      title: '响应时间',
       key: 'action',
       render: (text, record) => (
         <span>
@@ -64,7 +89,7 @@ export default class ErrorIndex extends React.Component {
       ),
     },
     {
-      title: '错误位置',
+      title: '协议类型',
       key: 'action2',
       render: (text, record) => (
         <span>
@@ -75,34 +100,36 @@ export default class ErrorIndex extends React.Component {
         </span>
       ),
     },
+    {
+      title: 'URL',
+      key: 'action3',
+      render: (text, record) => (
+        <span>
+          {/* <a href="javascript:;">Invite {record.name}</a>
+          <Divider type="vertical" />
+          <a href="javascript:;">Delete</a> */}
+          操作
+        </span>
+      ),
+    },
+    {
+      title: '请求时间',
+      key: 'action4',
+      render: (text, record) => (
+        <span>
+          {/* <a href="javascript:;">Invite {record.name}</a>
+          <Divider type="vertical" />
+          <a href="javascript:;">Delete</a> */}
+          操作
+        </span>
+      ),
+    }
   ]
 
 
 
   render() {
-    const data = [
-      {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-        tags: ['nice', 'developer'],
-      },
-      {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-        tags: ['loser'],
-      },
-      {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-        tags: ['cool', 'teacher'],
-      },
-    ];
+    const data = []
     
     return (
       <div className="error-index">

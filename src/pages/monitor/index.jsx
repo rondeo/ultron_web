@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-05-25 19:53:25
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-29 15:34:57
+ * @LastEditTime: 2019-05-30 16:35:57
  * @Description: 监控模块 
  * @youWant: add you want info here
  */
@@ -12,6 +12,7 @@
 import React from 'react'
 import MainWrap from 'components/main_wrap'
 import ErrorIndex from './error/error_index'
+import ResourceIndex from './resource/resource_index'
 import { Tabs } from 'antd'
 const TabPane = Tabs.TabPane
 // 业务组件
@@ -26,7 +27,7 @@ export default class MonitorIndex extends React.Component {
               <ErrorIndex />
             </TabPane>
             <TabPane tab="性能监控" key="2">
-              Content of Tab Pane 2
+              <ResourceIndex />
             </TabPane>
             <TabPane tab="资源监控" key="3">
               Content of Tab Pane 3
