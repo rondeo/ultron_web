@@ -1,0 +1,135 @@
+/*
+ * @Author: etongfu
+ * @Email: 13583254085@163.com
+ * @Version: 
+ * @Date: 2019-05-31 14:55:47
+ * @LastEditors: etongfu
+ * @LastEditTime: 2019-05-31 17:20:33
+ * @Description: 登陆页面样式
+ * @youWant: add you want info here
+ */
+.login-wrap{
+  position: relative;
+  background-color: $theme-color;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  padding-top: 10%;
+  // canvas
+  #bg-line{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+  .login-content{
+    min-width: 50%;
+    text-align: center;
+    // ================== logo 部分 ==================
+    .login-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .logo-font {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+    // ================== title 部分 ==================
+    .login-title{
+      h2 {
+        color: #ffffff;
+      }
+      padding: 50px 0 80px 0;
+    }
+
+    // ================== 功能切换tabs 部分 ==================
+    .login-main{
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      max-width: 500px;
+      align-self: center;
+      margin: 0 auto;
+      .login-tabs{
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+        position: relative;
+        .login-sign{
+          flex: 7;
+          text-align: left;
+        }
+        .login-forgot{
+          flex: 3;
+          text-align: right;
+        }
+        .login-tab-title{
+          display: inline-block;
+          font-size: 16px;
+          font-weight: bold;
+          color: #a2c4cc;
+          cursor: pointer;
+          transition: all ease .2s;
+          &:hover{
+            color: #ffffff;
+          }
+        }
+        .login-tab-title-active {
+          color: #ffffff;
+        }
+        // 游标地址
+        .tab-cursor{
+          // 三个位置代表着 不同的选中位置
+          left: 4%;
+          // left: 21%;
+          // left: 93%;
+          position: absolute;
+          bottom: 0;
+          transform: rotate(180deg);
+          display: inline-block;
+          height: 0;
+          border-width: 10px 8px 0;
+          border-style: solid;
+          border-color: #ffffff transparent transparent;
+          transition: all ease .5s;
+        }
+      }
+    }
+  }
+  // ================== 输入框 ==================
+  .login-input{
+    display: block;
+    color: #000000;
+    font-weight: 600;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    font-size: 16px;
+    padding-left: 5px;
+    border-radius: 5px;
+    transition: border-color ease-in-out 200ms;
+    &:focus {
+      border-color: $theme-color;
+      outline: 0;
+    }
+  }
+  .login-footer {
+    position: absolute;
+    bottom: 40px;
+    p {
+      text-align: center;
+    }
+    .keywords {
+      color: #f5f5f5;
+    }
+    .copyright{
+      color: #f8f8f8;
+    }
+  }
+}

@@ -29,39 +29,50 @@ class AppSide extends Component {
             <ul className="side-menu">
               <li>
                 <NavLink activeClassName="side-menu-active" to="/home"> 
-                  <Icon type="home" />  <span>主页</span>
+                  <span className="side-menu-item">
+                    <Icon type="home" />  <span>主页</span>
+                  </span>
                 </NavLink>
               </li>
               
               <li>
                 <NavLink activeClassName="side-menu-active" to="/found"> 
-                  <Icon type="compass" />  <span>发现</span>
+                  <span className="side-menu-item">
+                    <Icon type="compass" />  <span>发现</span>
+                  </span>
                 </NavLink>
               </li>
               <li>
                 <NavLink activeClassName="side-menu-active" to="/monitor"> 
-                  <Icon type="alert" />  <span>监控</span>
+                  <span className="side-menu-item">
+                    <Icon type="alert" />  <span>监控</span>
+                  </span>
                 </NavLink>
               </li>
 
               <li>
                 <NavLink activeClassName="side-menu-active" to="/file"> 
-                  <Icon type="file-protect" />  <span>文档</span>
+                  <span className="side-menu-item">
+                    <Icon type="file-protect" />  <span>文档</span>
+                  </span>
                 </NavLink>
               </li>
 
               <li>
                 <NavLink activeClassName="side-menu-active" to="/tools"> 
-                  <Icon type="tool" />  <span>工具</span>
+                  <span className="side-menu-item">
+                    <Icon type="tool" />  <span>工具</span>
+                  </span>
                 </NavLink>
               </li>
 
               <li>
                 <NavLink activeClassName="side-menu-active" to="/todo"> 
-                  <Icon type="database" /> <span>待办</span>
+                  <span className="side-menu-item">
+                    <Icon type="database" /> <span>待办</span>
+                  </span>
                 </NavLink>
               </li>
-
             </ul>
           </nav>
         </div>

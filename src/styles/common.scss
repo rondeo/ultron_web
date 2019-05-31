@@ -6,7 +6,7 @@
  * @Description: 通用样式表
  * @youWant: add you want info here
  * @Date: 2019-05-07 14:21:11
- * @LastEditTime: 2019-05-29 16:18:55
+ * @LastEditTime: 2019-05-31 16:55:49
  */
 // ================== box ==================
 .box {
@@ -86,4 +86,14 @@
       margin-left: 10px;
     }
   }
+}
+// padding
+.p-r-30 {
+  padding-right: 30px;
+}
+.m-t-5{
+  margin-top: 5px;
+}
+.m-t-10{
+  margin-top: 10px;
 }

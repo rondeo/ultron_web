@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-05-21 16:38:48
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-26 21:00:53
+ * @LastEditTime: 2019-05-31 13:48:45
  * @Description: 日期/天气组件
  * @youWant: add you want info here
  */
@@ -15,7 +15,6 @@ import { getWeatherInfo } from 'api/weather'
 // 天气组件
 export default class Weather extends React.Component {
   constructor (props) {
-    console.log('初始化constructor')
     super(props)
     this.state = {
       time: Util.getCurrentDate("YYYY-MM-DD hh:mm:ss", true),
@@ -27,9 +26,6 @@ export default class Weather extends React.Component {
       icon: '', // 天气图标
       location: "" // 地理位置
     }
-  }
-  componentWillMount () {
-    console.log('初始化componentWillMount')
   }
   // 挂载组件后
   componentDidMount(){

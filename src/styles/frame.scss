@@ -6,7 +6,7 @@
  * @Description: 框架样式 
  * @youWant: add you want info here
  * @Date: 2019-05-06 15:00:58
- * @LastEditTime: 2019-05-21 16:36:59
+ * @LastEditTime: 2019-05-31 14:52:00
  */
  @import url('./common.scss');
  #ultron {
@@ -15,7 +15,8 @@
     @include wh(100%, 100%);
     // 页面级内容
     .app{
-      @include wh(100%, 100%);
+      width: 100%;
+      min-height: 100%;
       background-color: $bg-color;
       display: flex;
       // 侧边栏
@@ -92,17 +93,21 @@
                 color: black;
                 font-size: 19px;
                 font-weight: bold;
-                padding: 10px;
-                border-radius: 30px;
                 display: flex;
                 align-items: center;
-                width: 50%;
-                span {
-                  margin-left: 20px;
+                .side-menu-item{
+                  border-radius: 30px;
+                  display: inline-block;
+                  padding: 10px 30px 10px 10px;
+                  span {
+                    margin-left: 20px;
+                  }
                 }
                 &:hover {
-                  background-color: rgba(24, 145, 172, 0.1);
-                  color: $theme-color;
+                  .side-menu-item {
+                    background-color: rgba(24, 145, 172, 0.1);
+                    color: $theme-color;
+                  }
                 }
               }
               margin: 10px 0;
@@ -117,7 +122,8 @@
         // ================== 主体内容部分 ==================
         .app-main {
         flex: 4;
-        height: 100%;
+        // height: 100%;
+        max-width: 800px;
         background-color: #ffffff;
         padding: $top-padding;
         border-left: 1px solid $border-color;

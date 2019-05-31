@@ -4,13 +4,13 @@
  * @Version: 
  * @Date: 2019-05-30 15:44:23
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-30 18:04:59
+ * @LastEditTime: 2019-05-31 14:01:54
  * @Description: 资源监控首页
  * @youWant: add you want info here
  */
 import React from 'react'
 import { SearchTitle, SearchItem } from 'components/search_title'
-import { Input, Button, Tooltip, Table, Tag } from 'antd'
+import { Input, Button, Tooltip, Table } from 'antd'
 import { getResourceList } from 'api/monitor/resource'
 
 export default class ResourceIndex extends React.Component {
@@ -19,7 +19,9 @@ export default class ResourceIndex extends React.Component {
     super()
     this.state = {
       pageNo: 1,
-      pageSize: 15
+      pageSize: 15,
+      list: [],
+      totalCount: 0
     }
   }
 
@@ -27,110 +29,63 @@ export default class ResourceIndex extends React.Component {
     this.load()
   }
 
-  load = () => {
+  load = async () => {
     let para = {
       pageNo: this.state.pageNo,
       pageSize: this.state.pageSize
     }
-    getResourceList(para).then((result) => {
-      console.log(result)
-    }).catch((err) => {
-      console.error(err)
-    })
+    try {
+      let result = await getResourceList(para)
+      if (result.success) {
+        const data = result.result
+        console.log(data);
+        this.setState({
+          totalCount: data.totalCount,
+          list: data.list
+        })
+        console.log(this.state.list);
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   columns = [
     {
       title: '信息来源',
-      dataIndex: 'name',
-      key: 'name',
-      render: text => <span>{text}</span>,
+      dataIndex: 'platformId'
     },
     {
       title: '资源名称',
-      dataIndex: 'age',
-      key: 'age',
+      dataIndex: 'name',
     },
     {
       title: '资源类型',
-      dataIndex: 'address',
-      key: 'address',
+      dataIndex: 'type',
     },
     {
       title: '资源大小（KB）',
-      key: 'tags',
-      dataIndex: 'tags',
-      render: tags => (
-        <span>
-          {tags.map(tag => {
-            let color = tag.length > 5 ? 'geekblue' : 'green';
-            if (tag === 'loser') {
-              color = 'volcano';
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </span>
-      ),
+      dataIndex: 'size'
     },
     {
       title: '响应时间',
-      key: 'action',
-      render: (text, record) => (
-        <span>
-          {/* <a href="javascript:;">Invite {record.name}</a>
-          <Divider type="vertical" />
-          <a href="javascript:;">Delete</a> */}
-          操作
-        </span>
-      ),
+      dataIndex: 'action',
     },
     {
       title: '协议类型',
-      key: 'action2',
-      render: (text, record) => (
-        <span>
-          {/* <a href="javascript:;">Invite {record.name}</a>
-          <Divider type="vertical" />
-          <a href="javascript:;">Delete</a> */}
-          操作
-        </span>
-      ),
+      dataIndex: 'protocol'
     },
     {
       title: 'URL',
-      key: 'action3',
-      render: (text, record) => (
-        <span>
-          {/* <a href="javascript:;">Invite {record.name}</a>
-          <Divider type="vertical" />
-          <a href="javascript:;">Delete</a> */}
-          操作
-        </span>
-      ),
+      dataIndex: 'url'
     },
     {
       title: '请求时间',
-      key: 'action4',
-      render: (text, record) => (
-        <span>
-          {/* <a href="javascript:;">Invite {record.name}</a>
-          <Divider type="vertical" />
-          <a href="javascript:;">Delete</a> */}
-          操作
-        </span>
-      ),
+      dataIndex: 'time'
     }
   ]
 
-
-
   render() {
-    const data = []
-    
     return (
       <div className="error-index">
         {/* 查询表头部分 */}
@@ -152,7 +107,7 @@ export default class ResourceIndex extends React.Component {
           </SearchItem>
         </SearchTitle>
         {/* 表格部分 */}
-        <Table size="middle" columns={this.columns} dataSource={data} />
+        <Table size="middle" columns={this.columns} dataSource={this.state.list} total={this.state.totalCount} />
       </div>
     )
   }
