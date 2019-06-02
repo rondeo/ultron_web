@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-05-30 15:44:23
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-31 14:01:54
+ * @LastEditTime: 2019-06-02 22:04:51
  * @Description: 资源监控首页
  * @youWant: add you want info here
  */
@@ -20,6 +20,7 @@ export default class ResourceIndex extends React.Component {
     this.state = {
       pageNo: 1,
       pageSize: 15,
+      loading: false, // 加载状态
       list: [],
       totalCount: 0
     }

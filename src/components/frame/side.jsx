@@ -51,7 +51,7 @@ class AppSide extends Component {
               </li>
 
               <li>
-                <NavLink activeClassName="side-menu-active" to="/file"> 
+                <NavLink activeClassName="side-menu-active" to="/doc"> 
                   <span className="side-menu-item">
                     <Icon type="file-protect" />  <span>文档</span>
                   </span>
