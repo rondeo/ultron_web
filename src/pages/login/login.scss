@@ -4,11 +4,11 @@
  * @Version: 
  * @Date: 2019-05-31 14:55:47
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-31 17:20:33
+ * @LastEditTime: 2019-06-03 16:30:17
  * @Description: 登陆页面样式
  * @youWant: add you want info here
  */
-.login-wrap{
+ .login-wrap{
   position: relative;
   background-color: $theme-color;
   display: flex;
@@ -35,8 +35,9 @@
       align-items: center;
       justify-content: center;
       .logo-font {
-        font-size: 16px;
-        font-weight: bold;
+        padding-left: 4px;
+        font-size: 21px;
+        font-weight: 500;
       }
     }
     // ================== title 部分 ==================
@@ -44,7 +45,7 @@
       h2 {
         color: #ffffff;
       }
-      padding: 50px 0 80px 0;
+      padding: 50px 0 40px 0;
     }
 
     // ================== 功能切换tabs 部分 ==================
@@ -119,6 +120,12 @@
       outline: 0;
     }
   }
+  // ================== 输入框动画包裹层 ==================
+  .animate-input{ 
+    // height: 40px;
+    transition: height .5s ease;
+  }
+  // ================== 登陆页 页脚 ==================
   .login-footer {
     position: absolute;
     bottom: 40px;

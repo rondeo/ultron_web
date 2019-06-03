@@ -28,7 +28,7 @@ class AppSide extends Component {
           <nav className="side-menu-wrap">
             <ul className="side-menu">
               <li>
-                <NavLink activeClassName="side-menu-active" to="/home"> 
+                <NavLink activeClassName="side-menu-active" exact to="/"> 
                   <span className="side-menu-item">
                     <Icon type="home" />  <span>主页</span>
                   </span>
@@ -51,7 +51,7 @@ class AppSide extends Component {
               </li>
 
               <li>
-                <NavLink activeClassName="side-menu-active" to="/file"> 
+                <NavLink activeClassName="side-menu-active" to="/doc"> 
                   <span className="side-menu-item">
                     <Icon type="file-protect" />  <span>文档</span>
                   </span>

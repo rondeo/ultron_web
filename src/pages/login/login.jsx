@@ -6,16 +6,17 @@
  * @Description: 登陆页面
  * @youWant: add you want info here
  * @Date: 2019-04-30 15:57:50
- * @LastEditTime: 2019-05-31 17:50:35
+ * @LastEditTime: 2019-06-03 16:31:00
  */
 import React from 'react'
-
+import { Button } from 'antd'
+// 业务组件
 import './login.scss'
 import Logo from 'assets/logo_line.png'
-import { Button } from 'antd'
 
+/* 
 const initCanvas = () => {
-  const canvas = document.getElementById('bg-line')
+const canvas = document.getElementById('bg-line')
   let ctx = canvas.getContext('2d')
   ctx.lineWidth = 2
   ctx.strokeStyle = '#000'
@@ -27,17 +28,14 @@ const initCanvas = () => {
   ctx.lineWidth = 1;
   ctx.lineJoin = 'round';
   ctx.lineCap = 'round';
-
 }
+*/
 export default class Login extends React.Component {
   constructor () {
     super()
     this.state = {
       currentTab: 0
     }
-  }
-  componentDidMount() {
-    initCanvas()
   }
   // 设置游标地址
   setCusorPosition = () => {
@@ -58,9 +56,10 @@ export default class Login extends React.Component {
     return index === this.state.currentTab ? 'login-tab-title-active' : ''
   }
   render () {
+    const names = ['登录', "注册", "找回密码"]
     return (
-      <div className="login-wrap">
-        <canvas id="bg-line" />
+      <div className="login-wrap" id="login">
+        {/* <canvas id="bg-line" /> */}
         <main className="login-content">
           <header className="login-logo">
             <img src={Logo} alt="Logo" height="20" /> <span className="logo-font">Ultron</span>
@@ -89,15 +88,15 @@ export default class Login extends React.Component {
             </div>
             <div className="login-form">
               <input className="login-input" placeholder="Email" size="large" />
-              
-              <input className="login-input m-t-10" placeholder="Email" size="large" />
-
-              <input className="login-input m-t-10" placeholder="Email" size="large" />
-
-              <input className="login-input m-t-10" placeholder="Email" size="large" />
+              <input className="login-input m-t-10" type="password" placeholder="Password" size="large" />
+              <div className="animate-input" style={{height: this.state.currentTab === 1 ? '40px': "0"}}>
+                <input style={{display: this.state.currentTab === 1 ? 'block': "none"}} className="login-input m-t-10" type="password" placeholder="Confirm Password" size="large" />
+              </div>
             </div>
             <div className="login-btn m-t-10">
-              <Button type="primary" block>Sign In</Button>
+              <Button type="primary" block>
+                {names[this.state.currentTab]}
+              </Button>
             </div>
           </content>
         </main>
