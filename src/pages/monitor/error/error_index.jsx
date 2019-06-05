@@ -4,106 +4,90 @@
  * @Version: 
  * @Date: 2019-05-27 15:45:47
  * @LastEditors: etongfu
- * @LastEditTime: 2019-05-30 15:41:56
+ * @LastEditTime: 2019-06-05 15:51:23
  * @Description: 错误数据的监控页面
  * @youWant: add you want info here
  */
 import React from 'react'
 import { SearchTitle, SearchItem } from 'components/search_title'
 import { Input, Button, Tooltip, Table, Tag } from 'antd'
-
+import { getErrorList } from 'api/monitor/error'
+let types = ['script', 'ajax', 'resource', 'vue']
 export default class ErrorIndex extends React.Component {
+
+  constructor () {
+    super()
+    this.state = {
+      pageNo: 1,
+      pageSize: 15,
+      loading: false, // 加载状态
+      list: [],
+      totalCount: 0
+    }
+  }
+
+  componentDidMount() {
+    this.load()
+  }
+
+  load = async () => {
+    let para = {
+      pageNo: this.state.pageNo,
+      pageSize: this.state.pageSize
+    }
+    try {
+      this.setState({
+        loading: true
+      })
+      let result = await getErrorList(para)
+      if (result.success) {
+        const data = result.result
+        this.setState({
+          totalCount: data.totalCount,
+          list: data.list,
+          loading: false
+        })
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   columns = [
     {
       title: '错误平台',
-      dataIndex: 'name',
-      key: 'name',
-      render: text => <span>{text}</span>,
-    },
-    {
-      title: '错误信息',
-      dataIndex: 'age',
-      key: 'age',
-    },
-    {
-      title: '操作系统',
-      dataIndex: 'address',
-      key: 'address',
+      dataIndex: 'platformId',
     },
     {
       title: '错误类型',
-      key: 'tags',
-      dataIndex: 'tags',
-      render: tags => (
-        <span>
-          {tags.map(tag => {
-            let color = tag.length > 5 ? 'geekblue' : 'green';
-            if (tag === 'loser') {
-              color = 'volcano';
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
+      key: 'type',
+      render (text, record, index) {
+        return <Tag key={index}>
+                {types[Number(text.type)]}
               </Tag>
-            );
-          })}
-        </span>
-      ),
+      }
+    },
+    {
+      title: '发生页面',
+      dataIndex: "ePage"
+    },
+    {
+      title: '相关信息',
+      dataIndex: 'eInfo'
+    },
+    {
+      title: '操作系统',
+      dataIndex: 'os'
     },
     {
       title: '错误位置',
-      key: 'action',
-      render: (text, record) => (
-        <span>
-          {/* <a href="javascript:;">Invite {record.name}</a>
-          <Divider type="vertical" />
-          <a href="javascript:;">Delete</a> */}
-          操作
-        </span>
+      render: (record) => (
+        <span>{record.lineno}行{record.colno}列 </span>
       ),
-    },
-    {
-      title: '错误位置',
-      key: 'action2',
-      render: (text, record) => (
-        <span>
-          {/* <a href="javascript:;">Invite {record.name}</a>
-          <Divider type="vertical" />
-          <a href="javascript:;">Delete</a> */}
-          操作
-        </span>
-      ),
-    },
+    }
   ]
 
-
-
   render() {
-    const data = [
-      {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-        tags: ['nice', 'developer'],
-      },
-      {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-        tags: ['loser'],
-      },
-      {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-        tags: ['cool', 'teacher'],
-      },
-    ];
-    
     return (
       <div className="error-index">
         {/* 查询表头部分 */}
@@ -125,7 +109,16 @@ export default class ErrorIndex extends React.Component {
           </SearchItem>
         </SearchTitle>
         {/* 表格部分 */}
-        <Table size="middle" columns={this.columns} dataSource={data} />
+        <Table 
+          rowKey = {record => record.id}
+          loading={this.state.loading} size="middle" columns={this.columns} dataSource={this.state.list} 
+          pagination={
+            {
+              total: this.state.totalCount,
+              pageSize: this.state.pageSize,
+              pageSizeOptions: ['10', '15', "20", '50']
+            }
+          } />
       </div>
     )
   }
