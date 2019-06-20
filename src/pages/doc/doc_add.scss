@@ -1,0 +1,53 @@
+/*
+ * @Author: etongfu
+ * @Email: 13583254085@163.com
+ * @Version: 
+ * @Date: 2019-06-20 16:52:06
+ * @LastEditors: etongfu
+ * @LastEditTime: 2019-06-20 17:58:05
+ * @Description: editor 页面
+ * @youWant: add you want info here
+ */
+.doc-editor{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  // header 部分
+  .doc-editor-header{
+    height: 80px;
+    background-color: #fff;
+    display: flex;
+    border-bottom: 1px solid $border-color;
+  }
+  // content 部分
+  .doc-editor-content {
+    display: flex;
+    flex: 1; // 自动撑开高度
+    padding: 10;
+    .doc-editor {
+      padding: 10;
+      width: 50%;
+      // div 模拟textarea
+      .doc-text-input{
+        overflow: auto;
+        height: 100%;
+        border: none;
+        padding: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        outline: 0;
+        word-wrap: break-word;
+        overflow-x: hidden;
+        overflow-y: auto;
+        &:focus{
+          border: none;
+        }
+      }
+    }
+    .doc-preview{
+      border-left: 1px solid $border-color;
+      width: 50%;
+      padding: 20px;
+    }
+  }
+}

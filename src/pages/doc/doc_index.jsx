@@ -6,11 +6,10 @@
  * @Description: 文档模块首页 
  * @youWant: add you want info here
  * @Date: 2019-06-02 22:06:21
- * @LastEditTime: 2019-06-04 14:23:45
+ * @LastEditTime: 2019-06-20 16:52:51
  */
 import React from 'react'
-import MainWrap from 'components/main_wrap';
-// 业务组件
+import MainWrap from 'components/main_wrap'
 import { Button } from 'antd'
 export default class TodoIndex extends React.Component {
   render () {

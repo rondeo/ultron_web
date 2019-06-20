@@ -11,11 +11,11 @@ export default class RouterCenter extends React.Component {
               {/* no frame routes */}
               {
                 routers.filter(route => route.noFrame).map(route => {
-                  //todo 进行鉴权相关操作
+                  //todo 进行鉴权相关操作需要开发
                   return <Route key={route.path} redirect={route.redirect} exact={route.exact} path={route.path} component={route.component} />
                 })
               }
-              {/* routes width frame */}
+              {/* routes wwarped by frame */}
               <Route path="/" render= { props => FrameRouter } /> 
           </Switch>
       </Router>
