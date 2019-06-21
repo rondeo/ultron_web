@@ -11,7 +11,7 @@ export default class RouterCenter extends React.Component {
               {/* no frame routes */}
               {
                 routers.filter(route => route.noFrame).map(route => {
-                  //todo 进行鉴权相关操作需要开发
+                  //todo 鉴权思路就是把这个路由组件替换成redirect到Login
                   return <Route key={route.path} redirect={route.redirect} exact={route.exact} path={route.path} component={route.component} />
                 })
               }

@@ -4,7 +4,7 @@
  * @Version: 
  * @Date: 2019-06-20 16:52:06
  * @LastEditors: etongfu
- * @LastEditTime: 2019-06-20 17:58:05
+ * @LastEditTime: 2019-06-21 17:31:17
  * @Description: editor 页面
  * @youWant: add you want info here
  */
@@ -25,11 +25,10 @@
     flex: 1; // 自动撑开高度
     padding: 10;
     .doc-editor {
-      padding: 10;
       width: 50%;
+      position: relative;
       // div 模拟textarea
       .doc-text-input{
-        overflow: auto;
         height: 100%;
         border: none;
         padding: 20px;
@@ -44,10 +43,38 @@
         }
       }
     }
+    // 预览文章
     .doc-preview{
+      position: relative;
+      background-color: #fff;
       border-left: 1px solid $border-color;
       width: 50%;
       padding: 20px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: 100%;
+      &[contenteditable=plaintext-only]{
+        &:empty:before {
+            content: attr(placeholder);
+            display: block;
+            color: #ccc;
+        }
+    }
+      h1{
+        font-size: 2em;
+      }
+      h2{
+        font-size: 1.5em;
+      }
+      h3{
+        font-size: 1.17rem;
+      }
+      h5{
+        font-size: 0.83em;
+      }
+      p{
+        font-size: 16px;
+      }
     }
   }
 }
